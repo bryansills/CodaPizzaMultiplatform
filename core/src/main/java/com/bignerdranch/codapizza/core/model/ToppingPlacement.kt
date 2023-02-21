@@ -1,7 +1,7 @@
-package com.bignerdranch.android.codapizza.model
+package com.bignerdranch.codapizza.core.model
 
 import androidx.annotation.StringRes
-import com.bignerdranch.android.codapizza.R
+import com.bignerdranch.codapizza.core.R
 
 enum class ToppingPlacement(
     @StringRes val label: Int

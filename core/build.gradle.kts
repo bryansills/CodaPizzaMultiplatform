@@ -1,20 +1,28 @@
 plugins {
-//    id("org.jetbrains.compose")
-    id("com.android.application")
+    id("com.android.library")
     kotlin("android")
     kotlin("plugin.parcelize")
 }
 
 android {
+    namespace = "com.bignerdranch.codapizza.core"
     compileSdk = 33
-    namespace = "com.bignerdranch.android.codapizza"
 
     defaultConfig {
-        applicationId = "com.bignerdranch.android.codapizza"
         minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
     }
 
     compileOptions {
@@ -26,13 +34,6 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles += file("proguard-rules.pro")
-        }
-    }
-
     buildFeatures {
         compose = true
     }
@@ -40,16 +41,9 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.1"
     }
-
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
-    implementation(project(":core"))
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.activity:activity-compose:1.6.1")
     implementation(platform("androidx.compose:compose-bom:2023.01.00"))
@@ -63,5 +57,4 @@ dependencies {
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.01.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
-}
+    debugImplementation("androidx.compose.ui:ui-test-manifest")}

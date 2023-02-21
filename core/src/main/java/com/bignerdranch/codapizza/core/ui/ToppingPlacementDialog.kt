@@ -1,4 +1,4 @@
-package com.bignerdranch.android.codapizza.ui
+package com.bignerdranch.codapizza.core.ui
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
@@ -14,9 +14,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.bignerdranch.android.codapizza.R
-import com.bignerdranch.android.codapizza.model.Topping
-import com.bignerdranch.android.codapizza.model.ToppingPlacement
+import com.bignerdranch.codapizza.core.R
+import com.bignerdranch.codapizza.core.model.Topping
+import com.bignerdranch.codapizza.core.model.ToppingPlacement
 
 @Composable
 fun ToppingPlacementDialog(

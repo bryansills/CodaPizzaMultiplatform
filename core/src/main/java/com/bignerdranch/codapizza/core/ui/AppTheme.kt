@@ -1,4 +1,4 @@
-package com.bignerdranch.android.codapizza.ui
+package com.bignerdranch.codapizza.core.ui
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.lightColors

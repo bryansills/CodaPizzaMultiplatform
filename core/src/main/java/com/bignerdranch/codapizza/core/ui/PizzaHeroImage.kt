@@ -1,4 +1,4 @@
-package com.bignerdranch.android.codapizza.ui
+package com.bignerdranch.codapizza.core.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.focusable
@@ -12,12 +12,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.bignerdranch.android.codapizza.R
-import com.bignerdranch.android.codapizza.model.Pizza
-import com.bignerdranch.android.codapizza.model.Topping
-import com.bignerdranch.android.codapizza.model.ToppingPlacement.All
-import com.bignerdranch.android.codapizza.model.ToppingPlacement.Left
-import com.bignerdranch.android.codapizza.model.ToppingPlacement.Right
+import com.bignerdranch.codapizza.core.R
+import com.bignerdranch.codapizza.core.model.Pizza
+import com.bignerdranch.codapizza.core.model.Topping
+import com.bignerdranch.codapizza.core.model.ToppingPlacement.All
+import com.bignerdranch.codapizza.core.model.ToppingPlacement.Left
+import com.bignerdranch.codapizza.core.model.ToppingPlacement.Right
 
 @Preview
 @Composable

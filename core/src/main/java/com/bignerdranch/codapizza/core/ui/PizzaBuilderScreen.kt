@@ -1,4 +1,4 @@
-package com.bignerdranch.android.codapizza.ui
+package com.bignerdranch.codapizza.core.ui
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
@@ -23,9 +23,9 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.bignerdranch.android.codapizza.R
-import com.bignerdranch.android.codapizza.model.Pizza
-import com.bignerdranch.android.codapizza.model.Topping
+import com.bignerdranch.codapizza.core.R
+import com.bignerdranch.codapizza.core.model.Pizza
+import com.bignerdranch.codapizza.core.model.Topping
 import java.text.NumberFormat
 
 @Preview
