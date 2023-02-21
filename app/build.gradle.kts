@@ -1,8 +1,8 @@
 plugins {
-//    id("org.jetbrains.compose")
     id("com.android.application")
     kotlin("android")
     kotlin("plugin.parcelize")
+    id("org.jetbrains.compose")
 }
 
 android {
