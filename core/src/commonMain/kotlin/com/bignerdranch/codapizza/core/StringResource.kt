@@ -21,4 +21,7 @@ enum class StringResource {
 }
 
 @Composable
+expect fun getStringResource(stringResource: StringResource): String
+
+@Composable
 expect fun getStringResource(stringResource: StringResource, vararg formatArgs: Any): String

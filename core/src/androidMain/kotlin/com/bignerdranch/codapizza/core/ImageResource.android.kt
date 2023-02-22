@@ -11,5 +11,11 @@ actual fun getImageResource(imageResource: ImageResource): Painter {
 
 private val ImageResource.resourceId: Int
     get() = when (this) {
-        else -> R.drawable.pizza_crust
+        ImageResource.PizzaCrust -> R.drawable.pizza_crust
+        ImageResource.ToppingBasil -> R.drawable.topping_basil
+        ImageResource.ToppingMushroom -> R.drawable.topping_mushroom
+        ImageResource.ToppingOlive -> R.drawable.topping_olive
+        ImageResource.ToppingPepperoni -> R.drawable.topping_pepperoni
+        ImageResource.ToppingPeppers -> R.drawable.topping_peppers
+        ImageResource.ToppingPineapple -> R.drawable.topping_pineapple
     }
