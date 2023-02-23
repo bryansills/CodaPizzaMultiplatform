@@ -33,34 +33,32 @@ fun ToppingPlacementDialogContent(
     onSetToppingPlacement: (placement: ToppingPlacement?) -> Unit,
     onDismissRequest: () -> Unit
 ) {
-    Card {
-        Column {
-            val toppingName = getStringResource(topping.toppingName)
-            Text(
-                text = getStringResource(StringResource.PlacementPrompt, toppingName),
-                style = MaterialTheme.typography.subtitle1,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(24.dp)
-            )
+    Column {
+        val toppingName = getStringResource(topping.toppingName)
+        Text(
+            text = getStringResource(StringResource.PlacementPrompt, toppingName),
+            style = MaterialTheme.typography.subtitle1,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(24.dp)
+        )
 
-            ToppingPlacement.values().forEach { placement ->
-                ToppingPlacementOption(
-                    placementName = placement.label,
-                    onClick = {
-                        onSetToppingPlacement(placement)
-                        onDismissRequest()
-                    }
-                )
-            }
-
+        ToppingPlacement.values().forEach { placement ->
             ToppingPlacementOption(
-                placementName = StringResource.PlacementNone,
+                placementName = placement.label,
                 onClick = {
-                    onSetToppingPlacement(null)
+                    onSetToppingPlacement(placement)
                     onDismissRequest()
                 }
             )
         }
+
+        ToppingPlacementOption(
+            placementName = StringResource.PlacementNone,
+            onClick = {
+                onSetToppingPlacement(null)
+                onDismissRequest()
+            }
+        )
     }
 }
 

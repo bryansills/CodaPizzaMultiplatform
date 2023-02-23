@@ -1,5 +1,6 @@
 package com.bignerdranch.codapizza.core.ui
 
+import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Dialog
 import com.bignerdranch.codapizza.core.model.Topping
@@ -12,10 +13,12 @@ actual fun ToppingPlacementDialog(
     onDismissRequest: () -> Unit
 ) {
     Dialog(onDismissRequest = onDismissRequest) {
-        ToppingPlacementDialogContent(
-            topping = topping,
-            onSetToppingPlacement = onSetToppingPlacement,
-            onDismissRequest = onDismissRequest
-        )
+        Card {
+            ToppingPlacementDialogContent(
+                topping = topping,
+                onSetToppingPlacement = onSetToppingPlacement,
+                onDismissRequest = onDismissRequest
+            )
+        }
     }
 }
