@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 
 @Composable
 actual fun getStringResource(stringResource: StringResource): String {
-    return "TBD"
+    return "TBD".format()
 }
 
 @Composable
