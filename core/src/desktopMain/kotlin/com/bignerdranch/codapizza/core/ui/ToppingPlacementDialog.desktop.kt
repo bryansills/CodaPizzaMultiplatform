@@ -4,6 +4,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.Window
+import com.bignerdranch.codapizza.core.getStringResource
 import com.bignerdranch.codapizza.core.model.Topping
 import com.bignerdranch.codapizza.core.model.ToppingPlacement
 
@@ -13,7 +14,10 @@ actual fun ToppingPlacementDialog(
     onSetToppingPlacement: (placement: ToppingPlacement?) -> Unit,
     onDismissRequest: () -> Unit
 ) {
-    Dialog(onCloseRequest = onDismissRequest) {
+    Dialog(
+        title = "Adding topping - ${getStringResource(topping.toppingName)}",
+        onCloseRequest = onDismissRequest
+    ) {
         ToppingPlacementDialogContent(
             topping = topping,
             onSetToppingPlacement = onSetToppingPlacement,
