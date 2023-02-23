@@ -10,10 +10,12 @@ import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -28,6 +30,7 @@ import com.bignerdranch.codapizza.core.StringResource
 import com.bignerdranch.codapizza.core.getStringResource
 import com.bignerdranch.codapizza.core.model.Pizza
 import com.bignerdranch.codapizza.core.model.Topping
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 
 //@Preview
@@ -37,8 +40,13 @@ fun PizzaBuilderScreen(
 ) {
     var pizza by rememberSaveable { mutableStateOf(Pizza()) }
 
+    val scaffoldState = rememberScaffoldState()
+    val scope = rememberCoroutineScope()
+    val snackbarMessage = getStringResource(StringResource.OrderPlacedToast)
+
     Scaffold(
         modifier = modifier,
+        scaffoldState = scaffoldState,
         topBar = {
             TopAppBar(
                 title = { Text(getStringResource(StringResource.AppName)) }
@@ -58,7 +66,14 @@ fun PizzaBuilderScreen(
                     pizza = pizza,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp)
+                        .padding(16.dp),
+                    onClick = {
+                        scope.launch {
+                            scaffoldState.snackbarHostState.showSnackbar(
+                                message = snackbarMessage
+                            )
+                        }
+                    }
                 )
             }
         }
@@ -110,15 +125,12 @@ private fun ToppingsList(
 @Composable
 private fun OrderButton(
     pizza: Pizza,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
-//    val context = LocalContext.current
     Button(
         modifier = modifier,
-        onClick = {
-//            Toast.makeText(context, R.string.order_placed_toast, Toast.LENGTH_LONG)
-//                .show()
-        }
+        onClick = onClick
     ) {
         val currencyFormatter = remember { NumberFormat.getCurrencyInstance() }
         val price = currencyFormatter.format(pizza.price)
