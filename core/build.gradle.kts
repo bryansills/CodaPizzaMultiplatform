@@ -1,19 +1,24 @@
-import org.jetbrains.compose.compose
-
 plugins {
-    id("com.android.library")
-    kotlin("plugin.parcelize")
-    kotlin("multiplatform")
-    id("org.jetbrains.compose")
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidKotlinMultiplatformLibrary)
+    alias(libs.plugins.parcelize)
+    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.composeMultiplatform)
 }
 
 kotlin {
-    android()
-    jvm("desktop") {
-        jvmToolchain(11)
+    androidLibrary {
+        namespace = "com.bignerdranch.codapizza.core"
+        compileSdk = 36
+        minSdk = 24
+        androidResources.enable = true
+        compilerOptions {
+            freeCompilerArgs.addAll("-P", "plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=com.bignerdranch.codapizza.core.Parcelize")
+        }
     }
+    jvm()
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             dependencies {
                 api(compose.runtime)
                 api(compose.foundation)
@@ -21,52 +26,14 @@ kotlin {
                 api(compose.preview)
             }
         }
-        val androidMain by getting {
+        androidMain {
             dependencies {
-                api("androidx.appcompat:appcompat:1.6.1")
-                api("androidx.core:core-ktx:1.9.0")
             }
         }
-        val desktopMain by getting {
+        jvmMain {
             dependencies {
                 api(compose.preview)
             }
         }
-    }
-}
-
-
-android {
-    namespace = "com.bignerdranch.codapizza.core"
-    compileSdk = 33
-
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.1"
     }
 }

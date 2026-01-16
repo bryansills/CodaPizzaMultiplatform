@@ -1,8 +1,9 @@
 plugins {
-    kotlin("android").version("2.3.0") apply false
-    kotlin("plugin.parcelize").version("2.3.0") apply false
-    id("com.android.application").version("9.0.0") apply false
-    id("com.android.library").version("8.0.0-beta03") apply false
-    kotlin("multiplatform").version("2.3.0") apply false
-    id("org.jetbrains.compose").version("1.10.0") apply false
+    alias(libs.plugins.androidApplication) apply false
+    alias(libs.plugins.composeCompiler) apply false
+    alias(libs.plugins.composeMultiplatform) apply false
+    alias(libs.plugins.parcelize) apply false
+    alias(libs.plugins.kotlinMultiplatform) apply false
+    alias(libs.plugins.kotlinJvm) apply false
+    alias(libs.plugins.androidKotlinMultiplatformLibrary) apply false
 }

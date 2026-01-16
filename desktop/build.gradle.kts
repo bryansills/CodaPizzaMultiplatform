@@ -1,28 +1,32 @@
-import org.jetbrains.compose.compose
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    kotlin("multiplatform")
-    id("org.jetbrains.compose")
+    alias(libs.plugins.kotlinJvm)
+    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.composeMultiplatform)
 }
 
-group = "com.bignerdranch.codapizza"
-version = "1.0-SNAPSHOT"
 
-
+//kotlin {
+//    jvm()
+//    sourceSets {
+//        val jvmMain by getting {
+//            dependencies {
+//                implementation(project(":core"))
+//            }
+//        }
+//    }
+//}
 kotlin {
-    jvm {
-        jvmToolchain(11)
-        withJava()
+    compilerOptions {
+        jvmTarget = JvmTarget.fromTarget("11")
     }
-    sourceSets {
-        val jvmMain by getting {
-            dependencies {
-                implementation(project(":core"))
-                implementation(compose.desktop.currentOs)
-            }
-        }
-    }
+}
+
+dependencies {
+    implementation(project(":core"))
+    implementation(compose.desktop.currentOs)
 }
 
 compose.desktop {
