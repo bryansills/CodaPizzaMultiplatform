@@ -1,3 +1,5 @@
+package com.bignerdranch.codapizza
+
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.bignerdranch.codapizza.core.StringResource

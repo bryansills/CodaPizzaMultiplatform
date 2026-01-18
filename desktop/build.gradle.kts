@@ -7,20 +7,9 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
 }
 
-
-//kotlin {
-//    jvm()
-//    sourceSets {
-//        val jvmMain by getting {
-//            dependencies {
-//                implementation(project(":core"))
-//            }
-//        }
-//    }
-//}
 kotlin {
     compilerOptions {
-        jvmTarget = JvmTarget.fromTarget("11")
+        jvmTarget = JvmTarget.fromTarget("21")
     }
 }
 
@@ -31,7 +20,7 @@ dependencies {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "com.bignerdranch.codapizza.MainKt"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "CodaPizzaDesktop"
