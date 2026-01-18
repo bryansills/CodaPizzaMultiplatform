@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 //import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.toUpperCase
+import androidx.compose.ui.tooling.preview.Preview
 //import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 //import com.bignerdranch.codapizza.core.R
@@ -33,7 +34,7 @@ import com.bignerdranch.codapizza.core.model.Topping
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
 
-//@Preview
+@Preview
 @Composable
 fun PizzaBuilderScreen(
     modifier: Modifier = Modifier

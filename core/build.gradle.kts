@@ -20,19 +20,11 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api(compose.runtime)
-                api(compose.foundation)
-                api(compose.material)
-                api(compose.preview)
-            }
-        }
-        androidMain {
-            dependencies {
-            }
-        }
-        jvmMain {
-            dependencies {
-                api(compose.preview)
+                implementation(libs.jetbrains.compose.runtime)
+                implementation(libs.jetbrains.compose.foundation)
+                implementation(libs.jetbrains.compose.material)
+                implementation(libs.jetbrains.compose.ui.tooling.core)
+                implementation(libs.jetbrains.compose.ui.tooling.preview)
             }
         }
     }
