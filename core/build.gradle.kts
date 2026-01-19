@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.parcelize)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.serialization)
 }
 
 kotlin {
@@ -22,9 +23,12 @@ kotlin {
             dependencies {
                 implementation(libs.jetbrains.compose.runtime)
                 implementation(libs.jetbrains.compose.foundation)
-                implementation(libs.jetbrains.compose.material)
                 implementation(libs.jetbrains.compose.ui.tooling.core)
                 implementation(libs.jetbrains.compose.ui.tooling.preview)
+                implementation(libs.androidx.material3)
+                implementation(libs.androidx.navigation3.ui)
+                implementation(libs.androidx.navigation3.runtime)
+                implementation(libs.kotlinx.serialization.core)
             }
         }
     }

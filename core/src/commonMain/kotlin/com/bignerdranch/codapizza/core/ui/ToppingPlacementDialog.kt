@@ -1,20 +1,18 @@
 package com.bignerdranch.codapizza.core.ui
 
 //import androidx.annotation.StringRes
+//import androidx.compose.ui.res.stringResource
+//import com.bignerdranch.codapizza.core.R
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-//import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-//import com.bignerdranch.codapizza.core.R
 import com.bignerdranch.codapizza.core.StringResource
 import com.bignerdranch.codapizza.core.getStringResource
 import com.bignerdranch.codapizza.core.model.Topping
@@ -37,7 +35,7 @@ fun ToppingPlacementDialogContent(
         val toppingName = getStringResource(topping.toppingName)
         Text(
             text = getStringResource(StringResource.PlacementPrompt, toppingName),
-            style = MaterialTheme.typography.subtitle1,
+            style = MaterialTheme.typography.labelMedium,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(24.dp)
         )

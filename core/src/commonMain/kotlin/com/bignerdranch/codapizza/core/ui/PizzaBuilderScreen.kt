@@ -1,16 +1,22 @@
 package com.bignerdranch.codapizza.core.ui
 
 //import android.widget.Toast
+//import androidx.compose.ui.platform.LocalContext
+//import androidx.compose.ui.res.stringResource
+//import androidx.compose.ui.tooling.preview.Preview
+//import com.bignerdranch.codapizza.core.R
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,21 +25,23 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-//import androidx.compose.ui.platform.LocalContext
-//import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
-//import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-//import com.bignerdranch.codapizza.core.R
+import androidx.navigation3.runtime.NavKey
 import com.bignerdranch.codapizza.core.StringResource
 import com.bignerdranch.codapizza.core.getStringResource
 import com.bignerdranch.codapizza.core.model.Pizza
 import com.bignerdranch.codapizza.core.model.Topping
 import kotlinx.coroutines.launch
+import kotlinx.serialization.Serializable
 import java.text.NumberFormat
 
+@Serializable
+data object PizzaBuilder : NavKey
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun PizzaBuilderScreen(
@@ -41,13 +49,15 @@ fun PizzaBuilderScreen(
 ) {
     var pizza by rememberSaveable { mutableStateOf(Pizza()) }
 
-    val scaffoldState = rememberScaffoldState()
+    val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     val snackbarMessage = getStringResource(StringResource.OrderPlacedToast)
 
     Scaffold(
         modifier = modifier,
-        scaffoldState = scaffoldState,
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState)
+        },
         topBar = {
             TopAppBar(
                 title = { Text(getStringResource(StringResource.AppName)) }
@@ -70,9 +80,7 @@ fun PizzaBuilderScreen(
                         .padding(16.dp),
                     onClick = {
                         scope.launch {
-                            scaffoldState.snackbarHostState.showSnackbar(
-                                message = snackbarMessage
-                            )
+                            snackbarHostState.showSnackbar(message = snackbarMessage)
                         }
                     }
                 )
