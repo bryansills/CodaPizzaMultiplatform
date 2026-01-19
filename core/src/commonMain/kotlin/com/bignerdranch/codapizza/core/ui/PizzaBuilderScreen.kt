@@ -34,7 +34,6 @@ import com.bignerdranch.codapizza.core.StringResource
 import com.bignerdranch.codapizza.core.getStringResource
 import com.bignerdranch.codapizza.core.model.Pizza
 import com.bignerdranch.codapizza.core.model.Topping
-import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import java.text.NumberFormat
 
@@ -45,6 +44,7 @@ data object PizzaBuilder : NavKey
 @Preview
 @Composable
 fun PizzaBuilderScreen(
+    onOrder: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var pizza by rememberSaveable { mutableStateOf(Pizza()) }
@@ -78,11 +78,12 @@ fun PizzaBuilderScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp),
-                    onClick = {
-                        scope.launch {
-                            snackbarHostState.showSnackbar(message = snackbarMessage)
-                        }
-                    }
+//                    onClick = {
+//                        scope.launch {
+//                            snackbarHostState.showSnackbar(message = snackbarMessage)
+//                        }
+//                    }
+                    onClick = { onOrder("haha random id") }
                 )
             }
         }
