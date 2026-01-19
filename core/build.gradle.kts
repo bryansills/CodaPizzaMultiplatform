@@ -25,8 +25,8 @@ kotlin {
                 implementation(libs.jetbrains.compose.foundation)
                 implementation(libs.jetbrains.compose.ui.tooling.core)
                 implementation(libs.jetbrains.compose.ui.tooling.preview)
-                implementation(libs.androidx.material3)
-                implementation(libs.androidx.navigation3.ui)
+                implementation(libs.jetbrains.compose.material3)
+                implementation(libs.jetbrains.navigation3.ui)
                 implementation(libs.androidx.navigation3.runtime)
                 implementation(libs.kotlinx.serialization.core)
             }

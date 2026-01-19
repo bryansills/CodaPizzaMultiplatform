@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="desktop-core">
+    <output-path>$PROJECT_DIR$/desktop-core/build/libs</output-path>
+    <root id="archive" name="desktop-core.jar">
+      <element id="module-output" name="Coda_Pizza_Multiplatform.desktop-core.androidMain" />
+    </root>
+  </artifact>
+</component>

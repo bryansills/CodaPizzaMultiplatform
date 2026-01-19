@@ -13,4 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Coda Pizza Multiplatform"
-include(":app", ":core", ":desktop")
+include(":app")
+include(":core")
+include(":desktop")
