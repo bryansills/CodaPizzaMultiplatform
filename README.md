@@ -1,6 +1,8 @@
 # Coda Pizza
 
 A Kotlin multiplatform project (Android and JVM) building on top of the final project in Big Nerd Ranch's Android guide.
+An older version of this app was presented at KotlinConf in 2023 as a codelab.
+I have added small bits and pieces to the project as the KMP/CMP platform has matured.
 
 ## Running the app
 
