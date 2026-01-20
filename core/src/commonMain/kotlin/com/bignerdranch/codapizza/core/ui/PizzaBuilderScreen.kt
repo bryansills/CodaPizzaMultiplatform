@@ -30,6 +30,7 @@ import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
+import com.bignerdranch.codapizza.core.OrderingRepository
 import com.bignerdranch.codapizza.core.StringResource
 import com.bignerdranch.codapizza.core.getStringResource
 import com.bignerdranch.codapizza.core.model.Pizza
@@ -83,7 +84,7 @@ fun PizzaBuilderScreen(
 //                            snackbarHostState.showSnackbar(message = snackbarMessage)
 //                        }
 //                    }
-                    onClick = { onOrder("haha random id") }
+                    onClick = { onOrder(OrderingRepository.DemoPizzaId) }
                 )
             }
         }

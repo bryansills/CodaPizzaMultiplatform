@@ -1,6 +1,9 @@
 package com.bignerdranch.codapizza.core
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
@@ -25,20 +28,27 @@ private val config = SavedStateConfiguration {
 
 @Composable
 fun App() {
-    AppTheme {
-        val backStack = rememberNavBackStack(config, PizzaBuilder)
+    val scope = rememberCoroutineScope()
+    val orderingRepository = remember(scope) {
+        OrderingRepository(coroutineScope = scope)
+    }
 
-        NavDisplay(
-            backStack = backStack,
-            onBack = backStack::removeLastOrNull,
-            entryProvider = entryProvider {
-                entry<PizzaBuilder> {
-                    PizzaBuilderScreen(
-                        onOrder = { backStack.add(PizzaTracker(orderId = it)) }
-                    )
+    CompositionLocalProvider(LocalOrderingRepository provides orderingRepository) {
+        AppTheme {
+            val backStack = rememberNavBackStack(config, PizzaBuilder)
+
+            NavDisplay(
+                backStack = backStack,
+                onBack = backStack::removeLastOrNull,
+                entryProvider = entryProvider {
+                    entry<PizzaBuilder> {
+                        PizzaBuilderScreen(
+                            onOrder = { backStack.add(PizzaTracker(orderId = it)) }
+                        )
+                    }
+                    entry<PizzaTracker> { PizzaTrackerScreen(it.orderId) }
                 }
-                entry<PizzaTracker> { PizzaTrackerScreen(it.orderId) }
-            }
-        )
+            )
+        }
     }
 }

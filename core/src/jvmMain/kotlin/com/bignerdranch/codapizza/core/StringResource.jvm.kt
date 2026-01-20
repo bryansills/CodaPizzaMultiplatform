@@ -29,4 +29,10 @@ private val StringResource.text: String
         StringResource.ToppingPepperoni -> "Pepperoni"
         StringResource.ToppingPineapple -> "Pineapple"
         StringResource.PizzaPreview -> "Pizza preview"
+        StringResource.StatusNotStarted -> "Not Started"
+        StringResource.StatusAccepted -> "Accepted"
+        StringResource.StatusBeingPrepared -> "Being Prepared"
+        StringResource.StatusBeingDelivered -> "Being Delivered"
+        StringResource.StatusDelivered -> "Delivered"
+        StringResource.CurrentOrderStatus -> "The current status of your order is:"
     }

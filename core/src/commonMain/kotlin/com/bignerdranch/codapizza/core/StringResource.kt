@@ -17,7 +17,13 @@ enum class StringResource {
     ToppingPeppers,
     ToppingPepperoni,
     ToppingPineapple,
-    PizzaPreview
+    PizzaPreview,
+    StatusNotStarted,
+    StatusAccepted,
+    StatusBeingPrepared,
+    StatusBeingDelivered,
+    StatusDelivered,
+    CurrentOrderStatus,
 }
 
 @Composable
