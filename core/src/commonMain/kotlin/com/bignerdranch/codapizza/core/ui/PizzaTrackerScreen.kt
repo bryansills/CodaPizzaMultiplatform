@@ -3,6 +3,8 @@ package com.bignerdranch.codapizza.core.ui
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -15,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import com.bignerdranch.codapizza.core.LocalOrderingRepository
 import com.bignerdranch.codapizza.core.OrderStatus
@@ -54,10 +57,13 @@ fun PizzaTrackerScreen(
                     style = MaterialTheme.typography.labelLarge,
                     textAlign = TextAlign.Center
                 )
-//                OrderProgressBar(
-//                    orderStatus = orderStatus,
-//                    modifier = Modifier.fillMaxWidth().height(72.dp).padding(16.dp)
-//                )
+                OrderProgressBar(
+                    orderStatus = orderStatus,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(72.dp)
+                        .padding(vertical = 16.dp, horizontal = 32.dp)
+                )
                 Text(
                     getStringResource(orderStatus.stringResource),
                     style = MaterialTheme.typography.headlineMedium
