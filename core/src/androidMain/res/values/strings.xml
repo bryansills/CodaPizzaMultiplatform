@@ -19,4 +19,15 @@
     <string name="topping_pineapple">Pineapple</string>
 
     <string name="pizza_preview">Pizza preview</string>
+
+    <string name="status_not_started">Not Started</string>
+    <string name="status_accepted">Accepted</string>
+    <string name="status_being_prepared">Being Prepared</string>
+    <string name="status_being_delivered">Being Delivered</string>
+    <string name="status_delivered">Delivered</string>
+    <string name="current_order_status">The current status of your order is:</string>
+    <string name="ordering_pizza">Ordering pizza…</string>
+    <string name="cancel">Cancel</string>
+    <string name="error_price">ERROR</string>
+    <string name="unknown_price">$??.??</string>
 </resources>

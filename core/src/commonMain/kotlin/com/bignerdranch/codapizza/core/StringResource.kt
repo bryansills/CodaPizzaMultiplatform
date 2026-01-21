@@ -24,6 +24,10 @@ enum class StringResource {
     StatusBeingDelivered,
     StatusDelivered,
     CurrentOrderStatus,
+    OrderingPizza,
+    Cancel,
+    ErrorPrice,
+    UnknownPrice
 }
 
 @Composable

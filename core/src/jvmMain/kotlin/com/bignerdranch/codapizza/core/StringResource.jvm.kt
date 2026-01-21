@@ -35,4 +35,8 @@ private val StringResource.text: String
         StringResource.StatusBeingDelivered -> "Being Delivered"
         StringResource.StatusDelivered -> "Delivered"
         StringResource.CurrentOrderStatus -> "The current status of your order is:"
+        StringResource.OrderingPizza -> "Ordering pizza..."
+        StringResource.Cancel -> "Cancel"
+        StringResource.ErrorPrice -> "ERROR"
+        StringResource.UnknownPrice -> "$??.??"
     }

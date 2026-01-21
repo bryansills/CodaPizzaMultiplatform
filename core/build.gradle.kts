@@ -29,6 +29,12 @@ kotlin {
                 implementation(libs.jetbrains.navigation3.ui)
                 implementation(libs.androidx.navigation3.runtime)
                 implementation(libs.kotlinx.serialization.core)
+                implementation(libs.jetbrains.viewmodel.navigation3)
+            }
+        }
+        jvmMain {
+            dependencies {
+                implementation(libs.kotlinx.coroutines.swing)
             }
         }
     }

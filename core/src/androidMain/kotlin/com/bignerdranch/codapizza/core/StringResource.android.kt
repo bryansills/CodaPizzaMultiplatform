@@ -31,5 +31,15 @@ private val StringResource.resourceId: Int
             StringResource.ToppingPepperoni -> R.string.topping_pepperoni
             StringResource.ToppingPineapple -> R.string.topping_pineapple
             StringResource.PizzaPreview -> R.string.pizza_preview
+            StringResource.StatusNotStarted -> R.string.status_not_started
+            StringResource.StatusAccepted -> R.string.status_accepted
+            StringResource.StatusBeingPrepared -> R.string.status_being_prepared
+            StringResource.StatusBeingDelivered -> R.string.status_being_delivered
+            StringResource.StatusDelivered -> R.string.status_delivered
+            StringResource.CurrentOrderStatus -> R.string.current_order_status
+            StringResource.OrderingPizza -> R.string.ordering_pizza
+            StringResource.Cancel -> R.string.cancel
+            StringResource.ErrorPrice -> R.string.error_price
+            StringResource.UnknownPrice -> R.string.unknown_price
         }
     }
