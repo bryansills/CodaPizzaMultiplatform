@@ -1,6 +1,6 @@
 [versions]
 agp = "9.1.0"
-androidx-activityCompose = "1.12.4"
+androidx-activityCompose = "1.13.0"
 composeMultiplatform = "1.10.2"
 coreKtx = "1.17.0"
 espressoCore = "3.7.0"
