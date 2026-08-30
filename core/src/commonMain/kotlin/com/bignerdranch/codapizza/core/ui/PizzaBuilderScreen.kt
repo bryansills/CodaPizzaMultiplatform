@@ -32,11 +32,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation3.runtime.NavKey
 import com.bignerdranch.codapizza.core.LocalOrderingRepository
 import com.bignerdranch.codapizza.core.OrderingRepository
-import com.bignerdranch.codapizza.core.PizzaBuilderUiState
 import com.bignerdranch.codapizza.core.PizzaBuilderViewModel
 import com.bignerdranch.codapizza.core.PizzaBuilderViewModelFactory
 import com.bignerdranch.codapizza.core.PriceState
@@ -61,8 +61,7 @@ fun PizzaBuilderScreen(
     val viewModel: PizzaBuilderViewModel = viewModel(
         factory = PizzaBuilderViewModelFactory(orderingRepository)
     )
-
-    val uiState by viewModel.uiState.collectAsState()
+    val priceState by viewModel.price.collectAsStateWithLifecycle()
 
     LaunchedEffect(viewModel) {
         viewModel.navEvent.collect {
@@ -81,9 +80,9 @@ fun PizzaBuilderScreen(
             Box(modifier = Modifier.padding(padding)) {
                 Column {
                     ToppingsList(
-                        pizza = uiState.pizza,
-                        toppings = uiState.toppings,
-                        isLoadingTopping = uiState.isLoadingToppings,
+                        pizza = viewModel.pizza,
+                        toppings = viewModel.availableToppings,
+                        isLoadingTopping = viewModel.isLoadingToppings,
                         onToppingSelected = viewModel::addTopping,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -91,8 +90,8 @@ fun PizzaBuilderScreen(
                     )
 
                     OrderButton(
-                        formattedPrice = uiState.formattedPrice,
-                        enabled = uiState.priceState is PriceState.Calculated,
+                        formattedPrice = priceState.formattedPrice,
+                        enabled = priceState is PriceState.Calculated,
                         onClick = viewModel::placeOrder,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -100,7 +99,7 @@ fun PizzaBuilderScreen(
                     )
                 }
 
-                if (uiState.isOrdering) {
+                if (viewModel.isOrdering) {
                     val bgColor = MaterialTheme.colorScheme.background
                         .copy(alpha = 0.75f)
                     Column(
@@ -126,10 +125,10 @@ fun PizzaBuilderScreen(
     )
 }
 
-private val PizzaBuilderUiState.formattedPrice: String
+private val PriceState.formattedPrice: String
     @Composable get() {
-        return when (this.priceState) {
-            is PriceState.Calculated -> this.priceState.price
+        return when (this) {
+            is PriceState.Calculated -> this.price
             PriceState.Error -> getStringResource(StringResource.ErrorPrice)
             PriceState.Unknown -> getStringResource(StringResource.UnknownPrice)
         }
