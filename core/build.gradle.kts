@@ -8,9 +8,9 @@ plugins {
 }
 
 kotlin {
-    androidLibrary {
+    android {
         namespace = "com.bignerdranch.codapizza.core"
-        compileSdk = 36
+        compileSdk = 37
         minSdk = 24
         androidResources.enable = true
         compilerOptions {
