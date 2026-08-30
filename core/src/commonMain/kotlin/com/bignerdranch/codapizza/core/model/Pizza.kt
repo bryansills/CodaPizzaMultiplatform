@@ -1,17 +1,14 @@
 package com.bignerdranch.codapizza.core.model
 
-import com.bignerdranch.codapizza.core.Parcelable
-import com.bignerdranch.codapizza.core.Parcelize
 import com.bignerdranch.codapizza.core.model.ToppingPlacement.All
 import com.bignerdranch.codapizza.core.model.ToppingPlacement.Left
 import com.bignerdranch.codapizza.core.model.ToppingPlacement.Right
 import kotlinx.serialization.Serializable
 
 @Serializable
-@Parcelize
 data class Pizza(
     val toppings: Map<Topping, ToppingPlacement> = emptyMap()
-) : Parcelable {
+) {
     val price: Double
         get() = 9.99 + toppings.asSequence()
             .sumOf { (_, toppingPlacement) ->

@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
-    alias(libs.plugins.parcelize)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.serialization)
@@ -13,9 +12,6 @@ kotlin {
         compileSdk = 37
         minSdk = 24
         androidResources.enable = true
-        compilerOptions {
-            freeCompilerArgs.addAll("-P", "plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=com.bignerdranch.codapizza.core.Parcelize")
-        }
     }
     jvm()
     sourceSets {
