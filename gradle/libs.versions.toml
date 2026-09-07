@@ -6,7 +6,7 @@ coreKtx = "1.19.0"
 espressoCore = "3.7.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
-kotlin = "2.4.10"
+kotlin = "2.4.20"
 serialization = "1.11.0"
 
 [libraries]
